@@ -1,7 +1,15 @@
 
 #pragma once
 
-#if defined( GAME_CSGO ) || defined( GAME_DESOLATION ) || defined( GAME_CHAOS )
+#if defined( GAME_STRATA )
+#define override_strata override
+#define override_not_strata
+#else
+#define override_strata
+#define override_not_strata override
+#endif
+
+#if defined( GAME_CSGO ) || defined( GAME_DESOLATION ) || defined( GAME_STRATA )
 #define GAME_CSGO_OR_NEWER
 #define override_csgo override
 #define override_not_csgo
@@ -19,7 +27,7 @@
 #define override_not_gmod override
 #endif
 
-#if defined( GAME_CSGO ) || defined( GAME_DESOLATION ) || defined( GAME_CHAOS ) || defined( GAME_PORTAL2 )
+#if defined( GAME_CSGO ) || defined( GAME_DESOLATION ) || defined( GAME_STRATA ) || defined( GAME_PORTAL2 )
 #define GAME_PORTAL2_OR_NEWER
 #define override_portal2 override
 #define override_not_portal2
@@ -28,7 +36,7 @@
 #define override_not_portal2 override
 #endif
 
-#if defined( GAME_CSGO ) || defined( GAME_DESOLATION ) || defined( GAME_CHAOS ) || defined( GAME_PORTAL2 ) || defined( GAME_L4D2 )
+#if defined( GAME_CSGO ) || defined( GAME_DESOLATION ) || defined( GAME_STRATA ) || defined( GAME_PORTAL2 ) || defined( GAME_L4D2 )
 #define GAME_L4D2_OR_NEWER
 #define override_l4d2 override
 #define override_not_l4d2
@@ -37,7 +45,7 @@
 #define override_not_l4d2 override
 #endif
 
-#if defined( GAME_CSGO ) || defined( GAME_DESOLATION ) || defined( GAME_CHAOS ) || defined( GAME_PORTAL2 ) || defined( GAME_L4D2 ) || defined( GAME_ASW )
+#if defined( GAME_CSGO ) || defined( GAME_DESOLATION ) || defined( GAME_STRATA ) || defined( GAME_PORTAL2 ) || defined( GAME_L4D2 ) || defined( GAME_ASW )
 #define GAME_ASW_OR_NEWER
 #define override_asw override
 #define override_not_asw
