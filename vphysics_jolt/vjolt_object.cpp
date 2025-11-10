@@ -62,6 +62,9 @@ JoltPhysicsObject::JoltPhysicsObject( JPH::Body *pBody, JoltPhysicsEnvironment *
 
 JoltPhysicsObject::~JoltPhysicsObject()
 {
+	if ( m_pDestroyCallback )
+		m_pDestroyCallback( m_pDestroyCallbackData, this );
+
 	RemoveShadowController();
 
 	// Josh:
@@ -1038,6 +1041,14 @@ void JoltPhysicsObject::SetCollisionHints( uint32 collisionHints )
 uint32 JoltPhysicsObject::GetCollisionHints() const
 {
 	return m_collisionHints;
+}
+
+//-------------------------------------------------------------------------------------------------
+
+void JoltPhysicsObject::SetDestroyCallback( void(*pCallback)( void*, IPhysicsObject* ), void* pData )
+{
+	m_pDestroyCallback = pCallback;
+	m_pDestroyCallbackData = pData;
 }
 
 //-------------------------------------------------------------------------------------------------

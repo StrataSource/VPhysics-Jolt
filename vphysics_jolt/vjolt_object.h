@@ -154,6 +154,8 @@ public:
 	void SetErrorDelta_Position( const Vector& vPosition ) override_csgo {}
 	void SetErrorDelta_Velocity( const Vector& vVelocity ) override_csgo {}
 
+	void SetDestroyCallback( void(*pCallback)( void*, IPhysicsObject* ), void* pData ) override_strata;
+
 public:
 	JoltPhysicsEnvironment *GetEnvironment() { return m_pEnvironment; }
 
@@ -275,6 +277,9 @@ private:
 	JPH::Body *m_pBody = nullptr;						// Underlying Jolt body
 	JoltPhysicsEnvironment *m_pEnvironment = nullptr;	// Physics environment this body belongs to
 	JPH::PhysicsSystem *m_pPhysicsSystem = nullptr;		// Physics system this body belongs to
+
+	void (*m_pDestroyCallback)( void*, IPhysicsObject* ) = nullptr;
+	void *m_pDestroyCallbackData = nullptr;
 };
 
 // Josh: This doesn't handle mass change and is kind of a hack and sliightly wrong.
