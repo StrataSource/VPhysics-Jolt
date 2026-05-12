@@ -102,6 +102,20 @@ JoltPhysicsSurfaceProps::JoltPhysicsSurfaceProps()
 
 //-------------------------------------------------------------------------------------------------
 
+void JoltPhysicsSurfaceProps::Reset()
+{
+	m_SurfaceProps.Purge();
+	m_SoundStrings.RemoveAll();
+
+	JoltSurfaceProp prop = {};
+	prop.data.physics.friction = 0.8f;
+	prop.data.physics.elasticity = 0.25f;
+	prop.data.physics.density = 2000.0f;
+	prop.data.physics.thickness = 0.0f;
+	prop.data.physics.dampening = 0.0f;
+	m_SurfaceProps["default"] = prop;
+}
+
 int JoltPhysicsSurfaceProps::ParseSurfaceData( const char *pFilename, const char *pTextfile )
 {
 	KeyValues::AutoDelete kv( SurfacePropsToKeyValues( pTextfile ) );

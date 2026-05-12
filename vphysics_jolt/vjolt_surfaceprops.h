@@ -26,6 +26,8 @@ class JoltPhysicsSurfaceProps final : public IPhysicsSurfaceProps
 public:
 	JoltPhysicsSurfaceProps();
 
+	void				Reset() override;
+
 	int					ParseSurfaceData( const char *pFilename, const char *pTextfile ) override;
 	int					SurfacePropCount( void ) const override;
 
